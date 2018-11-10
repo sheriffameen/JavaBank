@@ -1,6 +1,7 @@
 package org.pursuit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Customer {
 
@@ -32,19 +33,24 @@ public class Customer {
         return account.getAccountNumber();
     }
 
-    public void addAccount(String accountType,double accountBalance) {
 
-        this.account = new Account(accountType,accountBalance);
+
+    public void addAccount(int accountNumber, Account account) {
+
+        accountHashMap.put(accountNumber,account);
     }
 
-    public void Customer(String firstName, String lastName){
+    public Customer(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+
+    HashMap<Integer,Account> accountHashMap = new HashMap<>();
+
     @Override
     public String toString() {
-        return "First Name: " + firstName + "\nLast Name: " + lastName + "\nAccount: " + account;
+        return "First Name: " + firstName + "\nLast Name: " + lastName ;
     }
 
     //    public Customer() {

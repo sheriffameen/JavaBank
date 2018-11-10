@@ -8,11 +8,17 @@ public class Account {
     private int accountNumber;
     private String accountType;
     private double accountBalance;
+    private Customer customer;
 
-    public Account (String accountType, double accountBalance){
-        this.accountNumber = ((int) Math.ceil(Math.random() * 10000000));
+    public Account (int accountNumber, String accountType, double accountBalance, Customer customer){
+        this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.accountBalance = accountBalance;
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public String getAccountType() {
@@ -27,8 +33,32 @@ public class Account {
         return accountNumber;
     }
 
+
+
     @Override
     public String toString() {
-        return accountType + "\nAccount Balance: " + accountBalance;
+        return customer+"\n"+ "Account Balance: " + accountNumber+ "\n"+ accountType + "\n"+ accountBalance ;
+    }
+
+    public double accountDeposit(double depositAmount){
+        double money = depositAmount;
+        System.out.println("Current Balance: "+ money);
+        accountBalance = money + accountBalance;
+        System.out.println("After Balance: " + accountBalance);
+        return accountBalance;
+    }
+
+    public double accountWithdrawal(double withdrawalAmount){
+        double money = withdrawalAmount;
+        System.out.println("Current Balance: "+ money);
+        accountBalance = accountBalance - money;
+        System.out.println("After Balance: " + accountBalance);
+        return accountBalance;
+    }
+
+    public void closeAccount(){
+        accountBalance = 0;
+        accountType = "Closed";
+
     }
 }
